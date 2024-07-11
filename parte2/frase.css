@@ -7,22 +7,76 @@
 6 animare le altre 2 parole
 7 ritardare progressivamente l'animazione delle altre 2 parole 
 */
-body{
+
+body {
     font-family: 'Bree Serif', serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 0;
+}
+
+#testoAlternato {
+    font-size: 2em;
+    line-height: 1.5;
+    text-align: center;
+    border:2px solid black;
+    padding: 1em 5em 2em 1em;
 
 }
-#testoAlternato{
-    border:2px solid black;
-    padding: 1em;
-    padding-left: 1em;
-    font-size: 2em; 
-    line-height: 1.5; 
-}
-.parole{
+
+.parole {
+    display: inline-block;
+    position: relative;
+    height: 2rem; /* Stessa altezza della linea */
     color: #67879b;
 }
+
+.parole i {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    animation: hidden-word 6s ease-in-out infinite;
+}
+
+.parole i:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.parole i:nth-child(2) {
+    animation-delay: 2s;
+}
+
+.parole i:nth-child(3) {
+    animation-delay: 4s;
+}
+
+@keyframes hidden-word {
+    0%{
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    10% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    30%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    40%{
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+}
+
